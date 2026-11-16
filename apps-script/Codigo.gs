@@ -2,8 +2,8 @@
  * CORAL CIDADÃ – recebe os registros do app e grava na planilha e no Drive.
  *
  * COMO INSTALAR (uma vez):
- * 1. Na conta Google do projeto, crie uma planilha (ex.: "Coral Cidadã – registros").
- * 2. Crie uma pasta no Google Drive para as fotos (ex.: "Coral Cidadã – fotos").
+ * 1. Na conta Google do projeto, crie uma planilha (ex.: "Scuba Ciência Cidadã – registros").
+ * 2. Crie uma pasta no Google Drive para as fotos (ex.: "Scuba Ciência Cidadã – fotos").
  * 3. Na planilha: Extensões > Apps Script. Apague o que estiver lá e cole este arquivo inteiro.
  * 4. Configurações do projeto (engrenagem) > Propriedades do script > adicione:
  *      PLANILHA_ID = o código da planilha (o trecho da URL entre /d/ e /edit)
@@ -85,7 +85,7 @@ function doPost(e) {
 }
 
 function doGet() {
-  return resposta_({ ok: true, app: "Coral Cidadã" });
+  return resposta_({ ok: true, app: "Scuba Ciência Cidadã" });
 }
 
 function resposta_(obj) {

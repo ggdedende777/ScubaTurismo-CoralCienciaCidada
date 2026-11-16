@@ -1,4 +1,4 @@
-// Configurações do Coral Cidadã.
+// Configurações do Scuba Ciência Cidadã.
 // Este é o único arquivo que precisa ser editado no dia a dia.
 
 window.CORAL_CONFIG = {

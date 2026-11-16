@@ -1,6 +1,6 @@
 // Guarda os arquivos do app para funcionar sem internet.
 // Ao mudar qualquer arquivo do app, aumente o número da versão abaixo.
-const CACHE = "coral-cidada-v2";
+const CACHE = "coral-cidada-v3";
 const ARQUIVOS = ["./", "index.html", "config.js", "manifest.json", "icon.svg", "icon-192.png", "icon-512.png", "logos/scuba-quadrado.jpg", "logos/scuba-turismo.jpg"];
 
 self.addEventListener("install", e => {

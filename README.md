@@ -1,6 +1,6 @@
-# Coral Cidadã
+# Scuba Ciência Cidadã
 
-App de ciência cidadã do Projeto Coral Cidadã, para os recifes do Banco de Abrolhos (Caravelas e Alcobaça, BA).
+App de ciência cidadã do projeto Scuba Ciência Cidadã, para os recifes do Banco de Abrolhos (Caravelas e Alcobaça, BA).
 
 Depois do snorkel, o turista registra:
 - a foto horizontal do ponto fixo, feita com a GoPro do barco;
