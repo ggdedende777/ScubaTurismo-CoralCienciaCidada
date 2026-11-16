@@ -23,7 +23,7 @@ var COLUNAS = [
   "codigo_saida", "local", "atividade", "nome", "origem",
   "maior_de_idade", "aceite_termo",
   "especies_vi", "especies_acho_que_vi", "coral_branco",
-  "temperatura_agua_c", "ceu", "vento", "mar", "visibilidade", "observacoes",
+  "temperatura_agua_c", "temperatura_ar_c", "ceu", "vento", "mar", "visibilidade", "observacoes",
   "foto_equipe_envia", "foto_nome", "foto_drive_id", "foto_link",
   "navegador", "validacao"
 ];

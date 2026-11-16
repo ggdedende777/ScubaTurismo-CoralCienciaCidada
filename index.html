@@ -101,7 +101,7 @@ const st = {
   codigo:"", local:"", atividade:"", nome:"", origem:"",
   fotoNome:"", fotoURL:"", semFoto:false,
   esp:{}, branco:"",
-  temp:"", ceu:"", vento:"", mar:"", visib:"", obs:"",
+  temp:"", tempAr:"", ceu:"", vento:"", mar:"", visib:"", obs:"",
 };
 const $ = s => document.querySelector(s);
 const tela = $("#tela");
@@ -181,9 +181,11 @@ const TELAS = {
   },
   ambiente(){
     return `<h2>Condições do dia</h2>
-    <p class="sub">O educador informa a temperatura da água medida no barco.</p>
+    <p class="sub">O educador informa as temperaturas medidas no barco.</p>
     <div class="card"><label class="campo">Temperatura da água (°C)</label>
       <input type="number" inputmode="decimal" step="0.1" min="15" max="35" data-t="temp" value="${esc(st.temp)}" placeholder="Ex.: 27,5"></div>
+    <div class="card"><label class="campo">Temperatura do ar (°C)</label>
+      <input type="number" inputmode="decimal" step="0.1" min="10" max="45" data-t="tempAr" value="${esc(st.tempAr)}" placeholder="Ex.: 29"></div>
     <div class="card"><label class="campo">Como estava o céu?</label>${opcoes("ceu",["Ensolarado","Parcialmente nublado","Nublado","Chuvoso"])}</div>
     <div class="card"><label class="campo">Vento</label>${opcoes("vento",["Calmo","Moderado","Forte"])}</div>
     <div class="card"><label class="campo">Mar</label>${opcoes("mar",["Calmo","Com ondas pequenas","Agitado"])}</div>
@@ -201,7 +203,7 @@ const TELAS = {
       ${d("Saída", st.codigo)}${d("Local", st.local)}${d("Atividade", st.atividade)}${d("Nome", st.nome)}
       ${d("Foto do ponto fixo", st.fotoURL?st.fotoNome:(st.semFoto?"A equipe vai enviar":""))}
       ${d("Espécies que viu", vi.join(", "))}${d("Acha que viu", acho.join(", "))}
-      ${d("Coral branco", st.branco)}${d("Temperatura da água", st.temp?st.temp+" °C":"")}
+      ${d("Coral branco", st.branco)}${d("Temperatura da água", st.temp?st.temp+" °C":"")}${d("Temperatura do ar", st.tempAr?st.tempAr+" °C":"")}
       ${d("Céu", st.ceu)}${d("Vento", st.vento)}${d("Mar", st.mar)}${d("Visibilidade", st.visib)}${d("Observações", st.obs)}
     </dl></div>`;
   },
@@ -266,7 +268,7 @@ function carregarFoto(file){
 $("#avancar").onclick = () => {
   const av = $("#avancar");
   if (st.i>=PASSOS.length){
-    Object.assign(st,{i:0,aceite:false,maior:null,nome:"",origem:"",esp:{},branco:"",fotoURL:"",fotoNome:"",semFoto:false,temp:"",ceu:"",vento:"",mar:"",visib:"",obs:""});
+    Object.assign(st,{i:0,aceite:false,maior:null,nome:"",origem:"",esp:{},branco:"",fotoURL:"",fotoNome:"",semFoto:false,temp:"",tempAr:"",ceu:"",vento:"",mar:"",visib:"",obs:""});
   } else if (st.i>=0 && PASSOS[st.i]==="revisao"){
     av.disabled = true;
     guardarRegistro(montarRegistro()).then(()=>{ st.i++; render(); window.scrollTo(0,0); atualizarFila(); sincronizar(); })
@@ -296,7 +298,7 @@ function montarRegistro(){
     especies_vi: ESPECIES.filter((_,k)=>st.esp[k]==="vi").map(e=>e.c).join("; "),
     especies_acho_que_vi: ESPECIES.filter((_,k)=>st.esp[k]==="acho").map(e=>e.c).join("; "),
     coral_branco: st.branco,
-    temperatura_agua_c: st.temp, ceu: st.ceu, vento: st.vento, mar: st.mar, visibilidade: st.visib,
+    temperatura_agua_c: st.temp, temperatura_ar_c: st.tempAr, ceu: st.ceu, vento: st.vento, mar: st.mar, visibilidade: st.visib,
     observacoes: st.obs.trim(),
     foto_equipe_envia: st.semFoto ? "sim" : "não",
     foto_nome: st.fotoNome,
