@@ -2,8 +2,10 @@
  * CORAL CIDADÃ – recebe os registros do app e grava na planilha e no Drive.
  *
  * COMO INSTALAR (uma vez):
- * 1. Na conta Google do projeto, crie uma planilha (ex.: "Scuba Ciência Cidadã – registros").
- * 2. Crie uma pasta no Google Drive para as fotos (ex.: "Scuba Ciência Cidadã – fotos").
+ * 1. Planilha já criada: "Scuba Ciência Cidadã – registros", na pasta "Scuba Ciência Cidadã" do Drive.
+ *    PLANILHA_ID   = 1VxsqZDtFkKTnOtBbXuhKwPGGOPmif6np5cz-RHOJHY8
+ * 2. Pasta das fotos já criada: "Fotos", dentro da mesma pasta.
+ *    PASTA_FOTOS_ID = 1K1dlnEHGev02o3sZvRClzqNBJo8M-J9p
  * 3. Na planilha: Extensões > Apps Script. Apague o que estiver lá e cole este arquivo inteiro.
  * 4. Configurações do projeto (engrenagem) > Propriedades do script > adicione:
  *      PLANILHA_ID = o código da planilha (o trecho da URL entre /d/ e /edit)
@@ -74,6 +76,11 @@ function doPost(e) {
     r.foto_drive_id = foto.id;
     r.foto_link = foto.link;
     r.validacao = "";
+    // Temperaturas como número (a planilha em português usa vírgula decimal).
+    ["temperatura_agua_c", "temperatura_ar_c"].forEach(function (c) {
+      var n = parseFloat(String(r[c] || "").replace(",", "."));
+      r[c] = isNaN(n) ? "" : n;
+    });
 
     sh.appendRow(COLUNAS.map(function (c) { return r[c] === undefined ? "" : r[c]; }));
     return resposta_({ ok: true });
