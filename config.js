@@ -4,7 +4,7 @@
 window.CORAL_CONFIG = {
   // Cole aqui a URL do App da Web do Google Apps Script (termina em /exec).
   // Enquanto estiver vazia, os registros ficam guardados no aparelho e não são enviados.
-  SCRIPT_URL: "",
+  SCRIPT_URL: "https://script.google.com/macros/s/AKfycbxyygv87zAdaDVPRxbJF6oDJrhv2VElXBKHZefNjgM8E9mWsTNx7hzKo06jojirr-ZyTw/exec",
 
   // Locais de monitoramento.
   LOCAIS: [
